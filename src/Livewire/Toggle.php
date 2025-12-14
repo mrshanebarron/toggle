@@ -31,6 +31,6 @@ class Toggle extends Component
 
     public function render()
     {
-        return view('ld-toggle::livewire.toggle');
+        return view('sb-toggle::livewire.toggle');
     }
 }

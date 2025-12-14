@@ -9,8 +9,8 @@ class ToggleServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if (class_exists(\Livewire\Livewire::class)) {
-            \Livewire\Livewire::component('ld-toggle', Livewire\Toggle::class);
+            \Livewire\Livewire::component('sb-toggle', Livewire\Toggle::class);
         }
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'ld-toggle');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'sb-toggle');
     }
 }

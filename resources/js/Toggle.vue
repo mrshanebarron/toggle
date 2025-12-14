@@ -20,7 +20,7 @@
 import { computed } from 'vue';
 
 export default {
-  name: 'LdToggle',
+  name: 'SbToggle',
   props: {
     modelValue: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },

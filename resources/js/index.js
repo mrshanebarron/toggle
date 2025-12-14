@@ -1,3 +1,3 @@
 import Toggle from './Toggle.vue';
 export { Toggle };
-export default { install(app) { app.component('LdToggle', Toggle); } };
+export default { install(app) { app.component('SbToggle', Toggle); } };
