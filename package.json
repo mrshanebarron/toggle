@@ -1,0 +1,6 @@
+{
+    "name": "@mrshanebarron/toggle",
+    "version": "1.0.0",
+    "main": "resources/js/index.js",
+    "peerDependencies": {"vue": "^3.0.0"}
+}
