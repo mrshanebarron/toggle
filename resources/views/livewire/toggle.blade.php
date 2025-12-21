@@ -1,29 +1,27 @@
 @php
 $sizes = [
-    'sm' => ['track' => 'w-8 h-4', 'thumb' => 'w-3 h-3', 'translate' => 'translate-x-4'],
-    'md' => ['track' => 'w-11 h-6', 'thumb' => 'w-5 h-5', 'translate' => 'translate-x-5'],
-    'lg' => ['track' => 'w-14 h-7', 'thumb' => 'w-6 h-6', 'translate' => 'translate-x-7'],
+    'sm' => ['track' => 'width: 32px; height: 16px;', 'thumb' => 'width: 12px; height: 12px;', 'translate' => 'translateX(16px)'],
+    'md' => ['track' => 'width: 44px; height: 24px;', 'thumb' => 'width: 20px; height: 20px;', 'translate' => 'translateX(20px)'],
+    'lg' => ['track' => 'width: 56px; height: 28px;', 'thumb' => 'width: 24px; height: 24px;', 'translate' => 'translateX(28px)'],
 ];
-$s = $sizes[$size] ?? $sizes['md'];
+$s = $sizes[$this->size] ?? $sizes['md'];
 @endphp
 
-<label class="inline-flex items-center gap-3 {{ $disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer' }}">
+<label style="display: inline-flex; align-items: center; gap: 12px; {{ $this->disabled ? 'opacity: 0.5; cursor: not-allowed;' : 'cursor: pointer;' }}">
     <button
         type="button"
         role="switch"
         wire:click="toggle"
-        aria-checked="{{ $checked ? 'true' : 'false' }}"
-        @if($disabled) disabled @endif
-        class="{{ $s['track'] }} relative inline-flex shrink-0 rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 {{ $checked ? 'bg-blue-600' : 'bg-gray-200' }}"
+        aria-checked="{{ $this->checked ? 'true' : 'false' }}"
+        @if($this->disabled) disabled @endif
+        style="{{ $s['track'] }} position: relative; display: inline-flex; flex-shrink: 0; border-radius: 9999px; border: 2px solid transparent; transition: background-color 0.2s; background: {{ $this->checked ? '#2563eb' : '#e5e7eb' }};"
     >
-        <span
-            class="{{ $s['thumb'] }} pointer-events-none inline-block transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out {{ $checked ? $s['translate'] : 'translate-x-0' }}"
-        ></span>
+        <span style="{{ $s['thumb'] }} pointer-events: none; display: inline-block; transform: {{ $this->checked ? $s['translate'] : 'translateX(0)' }}; border-radius: 9999px; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: transform 0.2s;"></span>
     </button>
-    @if($label)
-        <span class="text-sm font-medium text-gray-900">{{ $label }}</span>
+    @if($this->label)
+        <span style="font-size: 14px; font-weight: 500; color: #111827;">{{ $this->label }}</span>
     @endif
-    @if($name)
-        <input type="hidden" name="{{ $name }}" value="{{ $checked ? '1' : '0' }}">
+    @if($this->name)
+        <input type="hidden" name="{{ $this->name }}" value="{{ $this->checked ? '1' : '0' }}">
     @endif
 </label>
